@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<bean id="ConfigBean" class="com.anz.securities.dataloader.spi.LoaderConfig">
+		<property name="config">
+			<map>
+				<entry key="ConversionRateResource" value="ConversionRate.xml" />
+				<entry key="ConversionRulesResource" value="ConversionRules.xml" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="XMLLoader" class="com.anz.securities.data.xmlloader.impl.XMLDataLoader">
+	</bean>
+
+	<bean id="currencyconverter" class="com.anz.securities.entities.dto.CurrencyConverter">
+	</bean>
+
+	<bean id="calculator" class="com.anz.securities.application.fxcalculator.FxCalculator">
+		<property name="loaderConfig" ref="ConfigBean"></property>
+		<property name="loader" ref="XMLLoader"></property>
+	</bean>
+
+</beans>

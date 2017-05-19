@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Appenders>
+		<File name="MyCustomLogFile" fileName="./fxcalculator.log">
+			<PatternLayout>
+				<Pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+				</Pattern>
+			</PatternLayout>
+		</File>
+		<File name="Spring-File-Appender" fileName="./springlog.log">
+			<PatternLayout>
+				<Pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+				</Pattern>
+			</PatternLayout>
+		</File>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Logger name="org.springframework" level="all" additivity="false">
+			<AppenderRef ref="Spring-File-Appender" />
+			<AppenderRef ref="Console" />
+		</Logger>
+		<Logger name="com.anz" level="all" additivity="false">
+			<AppenderRef ref="MyCustomLogFile" />
+		</Logger>
+		<Root>
+			<AppenderRef ref="Console" />
+		</Root>
+	</Loggers>
+</Configuration>
