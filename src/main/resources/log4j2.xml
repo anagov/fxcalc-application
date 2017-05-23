@@ -18,7 +18,7 @@
 		</Console>
 	</Appenders>
 	<Loggers>
-		<Logger name="org.springframework" level="all" additivity="false">
+		<Logger name="org.springframework.beans.factory" level="INFO" additivity="false">
 			<AppenderRef ref="Spring-File-Appender" />
 			<AppenderRef ref="Console" />
 		</Logger>
